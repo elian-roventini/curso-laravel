@@ -141,8 +141,39 @@ Route::middleware([])->group(function(){
 //     return 'home admin';
 // })->middleware('auth');
 
+//Inicializando o módulo de CONTROLLERS
 
+Route::get('/financeiro', 'FinanceiroController@index')->name('financeiro.index');
 
+/*
+//Controllers com parametros de rotas
+    //READ//Por padrao, quando queremos mostrar algo em POO, utiliza o nome show
+Route::get('/financeiro/{id}', 'FinanceiroController@show')->name('financeiro.show');
+    //utilizando CRUD
+    //EDIT Editar um produto (fingir ser um exemplo de produto)
+Route::put('/financeiro/{id}', 'FinanceiroController@update')->name('financeiro.update');
+ 
+    //Create
+Route::get('/financeiro/create', 'FinanceiroController@create')->name('financeiro.create');
+
+Route::post('financeiro', 'FinanceiroController@store')->name('financeiro.store');
+
+    //deletar (DELETE)
+Route::delete('/financeiro/{id}', 'FinanceiroController@destroy')->name('financeiro.destroy');
+*/
+
+//Controllers Resources
+//Basicamente, posso utilizar para substituir todas as linhas de controllers acima.
+
+/*Route::resource('financeiro', 'FinanceiroController');*/
+
+  //Utilizando Resource
+Route::resource('financeiro2', 'Financeiro2Controller');
+
+/*Caso queira criar o CRUD com Resources, é bem mais
+rápido, utilizar a linha de comando:
+php artisan make:controller nomeController --resource
+*/
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
